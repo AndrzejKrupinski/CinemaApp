@@ -1,11 +1,17 @@
 <?php declare(strict_types=1);
 
-/**
- * Description of Movie
- *
- * @author andrz
- */
-class Movie
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+
+class Movie extends Model
 {
-    //put your code here
+    /** @var array */
+    protected $fillable = ['name', 'description', 'year', 'rating', 'duration',];
+
+    public function filmShows(): Collection
+    {
+        return $this->hasMany('App\Models\FilmShow', 'movie_id', 'id');
+    }
 }

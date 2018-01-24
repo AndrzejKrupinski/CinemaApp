@@ -17,9 +17,9 @@ class CreateTableMovies extends Migration
             $table->increments('id');
             $table->string('name', 100)->index();
             $table->text('description')->nullable();
-            $table->year('year')->nullable()->index();  //CHYBA TRZEBA LICZBĘ CYFR
+            $table->year('year')->nullable()->index();
             $table->float('rating', 4, 2)->nullable()->index();
-            $table->integer('duration')->index();  //CHYBA TRZEBA LICZBĘ CYFR
+            $table->integer('duration')->index();
             $table->timestamps();
         });
     }

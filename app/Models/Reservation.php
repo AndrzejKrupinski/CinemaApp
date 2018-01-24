@@ -1,11 +1,16 @@
 <?php declare(strict_types=1);
 
-/**
- * Description of Movie
- *
- * @author andrz
- */
-class Reservation
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Reservation extends Model
 {
-    //put your code here
+    /** @var array */
+    protected $fillable = ['film_show_id', 'name', 'email',];
+
+    public function filmShow(): FilmShow
+    {
+        return $this->belongsTo('App\Models\FilmShow', 'id', 'film_show_id');
+    }
 }
