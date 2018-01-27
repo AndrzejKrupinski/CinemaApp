@@ -11,6 +11,19 @@
 |
 */
 
+//ROBOCZE ROUTINGI:
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
+});
+
+Route::view('/movie', 'reservation.movie');
+
+Route::get('user/profile', 'UserController@showProfile')->name('profile');
+
+Route::get('details', function () {
+    return view('reservation.details');
+});
+
+Route::get('confirmation', function () {
+    return view('reservation.confirmation');
 });

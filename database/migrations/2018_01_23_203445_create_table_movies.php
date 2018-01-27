@@ -18,6 +18,9 @@ class CreateTableMovies extends Migration
             $table->string('name', 100)->index();
             $table->text('description')->nullable();
             $table->year('year')->nullable()->index();
+            $table->string('country', 50)->index();
+            $table->string('genre', 25)->index();
+            $table->string('director', 50)->index();
             $table->float('rating', 4, 2)->nullable()->index();
             $table->integer('duration')->index();
             $table->timestamps();

@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Collection;
 class Movie extends Model
 {
     /** @var array */
-    protected $fillable = ['name', 'description', 'year', 'rating', 'duration',];
+    protected $fillable = [
+        'name',
+        'description',
+        'year',
+        'rating',
+        'duration',
+        'country',
+        'genre',
+        'director',
+    ];
 
     public function filmShows(): Collection
     {
