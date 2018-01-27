@@ -16,14 +16,8 @@ Route::get('/', function () {
     return view('layout');
 });
 
-Route::view('/movie', 'reservation.movie');
+Route::get('/movie', 'MovieController@index')->name('movie');
 
-Route::get('user/profile', 'UserController@showProfile')->name('profile');
+Route::get('/filmshow', 'FilmShowController@index')->name('filmshow');
 
-Route::get('details', function () {
-    return view('reservation.details');
-});
-
-Route::get('confirmation', function () {
-    return view('reservation.confirmation');
-});
+Route::get('/reservation', 'ReservationController@index')->name('reservation');

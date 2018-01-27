@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class MovieController extends Controller
+class ReservationController extends Controller
 {
     public function index(): View
     {
-        return view('reservation.movie');
+        return view('reservation.reservation');
     }
 }
