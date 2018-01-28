@@ -11,23 +11,63 @@
     <p id="{{ $movie->id }}-duration">{{ $movie->duration }}</p>
 
     <div class="shows-table" id="{{ $movie->id }}-table">
+        <div class="row">
         <!--TO TEŻ WRZUCIĆ DO IKLUDOWANEGO VIEWA-->
-        <table style="width:100%">
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
-            </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td>
-                <td>94</td>
-            </tr>
-        </table>
+            <table style="width:50%">
+                <tr>
+                    <th class="Monday col-md-2">Monday</th>
+                    <th class="Tuesday col-md-1">Tuesday</th>
+                    <th class="Wednesday col-md-1">Wednesday</th>
+                    <th class="Thursday col-md-1">Thursday</th>
+                    <th class="Friday col-md-1">Friday</th>
+                    <th class="Saturday col-md-1">Saturday</th>
+                    <th class="Sunday col-md-1">Sunday</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>Monday</li>
+                            <li>Monday</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Tuesday</li>
+                            <li>Tuesday</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Wednesday</li>
+                            <li>Wednesday</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Thursday</li>
+                            <li>Thursday</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Friday</li>
+                            <li>Friday</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Saturday</li>
+                            <li>Saturday</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Sunday</li>
+                            <li>Sunday</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
