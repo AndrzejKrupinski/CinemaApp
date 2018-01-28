@@ -65,9 +65,11 @@
         </style>
     </head>
     <body>
-        @section('sidebar')
-            This is the master sidebar.
-        @show
+        <div class="content">
+            <div class="title m-b-md">
+                Welcome to the CinemaApp!
+            </div>
+        </div>
 
         <div class="container">
             @yield('content')

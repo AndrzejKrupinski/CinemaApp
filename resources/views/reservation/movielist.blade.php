@@ -1,11 +1,15 @@
 @extends('layout')
 
-@section('sidebar')
-    @parent
-
-    <p>This is appended to the master sidebar.</p>
-@endsection
-
 @section('content')
-    <p>This is my body content.</p>
+<div class="movie-container">
+    <div class="container-title">
+        <h2>Please select the movie you'd like to see!</h2>
+    </div>
+
+    <div class="container-panel">
+        @foreach ($movies as $movie)
+            @include('reservation.movie', ['movie' => $movie])
+        @endforeach
+    </div>
+</div>
 @endsection

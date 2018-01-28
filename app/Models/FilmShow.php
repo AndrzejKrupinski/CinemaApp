@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FilmShow extends Model
 {
+    /** @var string */
+    protected $table = 'film_shows';
+
     /** @var array */
     protected $fillable = ['movie_id', 'time',];
 
