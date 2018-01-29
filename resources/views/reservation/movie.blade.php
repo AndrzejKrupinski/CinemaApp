@@ -15,15 +15,15 @@
         <!--TO TEŻ WRZUCIĆ DO IKLUDOWANEGO VIEWA-->
             <table style="width:50%">
                 <tr>
-                    <th class="Monday col-md-2">Monday</th>
-                    <th class="Tuesday col-md-1">Tuesday</th>
-                    <th class="Wednesday col-md-1">Wednesday</th>
-                    <th class="Thursday col-md-1">Thursday</th>
-                    <th class="Friday col-md-1">Friday</th>
-                    <th class="Saturday col-md-1">Saturday</th>
-                    <th class="Sunday col-md-1">Sunday</th>
+                    <th class="Monday col-md-2">Monday<br>{{ $currentWeek['monday'] }}</th>
+                    <th class="Tuesday col-md-1">Tuesday<br>{{ $currentWeek['tuesday'] }}</th>
+                    <th class="Wednesday col-md-1">Wednesday<br>{{ $currentWeek['wednesday'] }}</th>
+                    <th class="Thursday col-md-1">Thursday<br>{{ $currentWeek['thursday'] }}</th>
+                    <th class="Friday col-md-1">Friday<br>{{ $currentWeek['friday'] }}</th>
+                    <th class="Saturday col-md-1">Saturday<br>{{ $currentWeek['saturday'] }}</th>
+                    <th class="Sunday col-md-1">Sunday<br>{{ $currentWeek['sunday'] }}</th>
                 </tr>
-<!--                <tr>
+                <tr>
                     <td>
                         <ul>
                             <li>Monday</li>
@@ -66,9 +66,8 @@
                             <li>Sunday</li>
                         </ul>
                     </td>
-                </tr>-->
+                </tr>
             </table>
-        {{ var_dump($filmShows) }}
         </div>
     </div>
 </div>

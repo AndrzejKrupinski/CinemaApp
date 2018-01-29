@@ -12,14 +12,15 @@ class Movie extends Model
 
     /** @var array */
     protected $fillable = [
-        'name',
+        'name', //ZMIENIĆ NA TITLE
         'description',
         'year',
-        'rating',
-        'duration',
         'country',
         'genre',
         'director',
+        'rating',
+        'duration',
+        'photo',
     ];
 
     public function filmShows(): Collection

@@ -14,34 +14,27 @@ class MovieController extends Controller
     /** @var Movie */
     private $model;
 
-    public function __construct(Movie $movie)
-    {
+    public function __construct(
+        Movie $movie,
+        FilmShowController $filmShowController
+    ) {
         $this->model = $movie;
+        $this->filmShowController = $filmShowController;
     }
 
         public function index(): View
     {
         $movies = $this->getAll();
-        $moviesIds = array_column($movies->toArray(), 'id');
 
         return view('reservation.movielist', [
             'movies' => $movies,
-            'filmShows' => $this->getCurrentShows($moviesIds),
+            'currentWeek' => $this->filmShowController->parseWeekDates(),
+            'filmShows' => $this->filmShowController->getCurrentShows(array_column($movies->toArray(), 'id')),
         ]);
     }
 
     private function getAll(): Collection
     {
         return $this->model::all();
-    }
-
-    /**
-     * MA ZWRACAĆ PAKIET DANYCH, ALE TYLKO DLA FILMÓW Z LISTY! DLA KAŻDEGO POJEDYNCZO!
-     */
-    private function getCurrentShows(array $moviesIds)
-    {
-        $filmShowController = resolve(FilmShowController::class);
-
-        return $filmShowController->getCurrentShows($moviesIds);
     }
 }

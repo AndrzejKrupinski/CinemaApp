@@ -11,31 +11,21 @@ use Illuminate\Support\Facades\DB;
 
 class FilmShowController extends Controller
 {
+    /** @var FilmShow */
     private $model;
+
+    /** @var array */
+    public $currentWeek;
 
     public function __construct(FilmShow $filmShow)
     {
         $this->model = $filmShow;
+        $this->currentWeek = $this->getCurrentWeekDates();
     }
 
     public function index(): View
     {
         return view('reservation.filmshow');
-    }
-
-    /**
-     * Get a set of shows for given movie in current week
-     */
-    public function getCurrentShows(array $movieIds): array
-    {
-        $week = $this->getCurrentWeekDates();
-
-        return $this->model
-            ->whereIn('movie_id', $movieIds)
-            ->where('time', '>=', $week['monday'])
-            ->where('time', '<=', $week['friday'])
-            ->get()
-            ->toArray();
     }
 
     /**
@@ -60,6 +50,34 @@ class FilmShowController extends Controller
             'friday' => $friday,
             'saturday' => $saturday,
             'sunday' => $sunday
+        ];
+    }
+
+    /**
+     * Get a set of shows for given movie in current week
+     */
+    public function getCurrentShows(array $movieIds): array
+    {
+        return $this->model
+            ->whereIn('movie_id', $movieIds)
+            ->where('time', '>=', $this->currentWeek['monday'])
+            ->where('time', '<=', $this->currentWeek['friday'])
+            //->groupBy('movie_id')
+            ->orderBy('time', 'asc')
+            ->get()
+            ->toArray();
+    }
+
+    public function parseWeekDates(): array
+    {
+        return [
+            'monday'=> $this->currentWeek['monday']->format('d.m'),
+            'tuesday'=> $this->currentWeek['tuesday']->format('d.m'),
+            'wednesday'=> $this->currentWeek['wednesday']->format('d.m'),
+            'thursday'=> $this->currentWeek['thursday']->format('d.m'),
+            'friday'=> $this->currentWeek['friday']->format('d.m'),
+            'saturday'=> $this->currentWeek['saturday']->format('d.m'),
+            'sunday'=> $this->currentWeek['sunday']->format('d.m'),
         ];
     }
 }
