@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class FilmShowController extends Controller
 {
@@ -23,18 +24,23 @@ class FilmShowController extends Controller
     }
 
     /**
-     * Return a set of shows for given movie in current week
+     * Get a set of shows for given movie in current week
      */
-    public function getCurrentShows(array $movieIds): Collection
+    public function getCurrentShows(array $movieIds): array
     {
         $week = $this->getCurrentWeekDates();
 
-        return $this->model->whereIn('movie_id', $movieIds)
-            ->where('data większa lub równa poniedziałkowi')
-            ->where('data mniejsza lub równa poniedziałkowi')
-            ->get();
+        return $this->model
+            ->whereIn('movie_id', $movieIds)
+            ->where('time', '>=', $week['monday'])
+            ->where('time', '<=', $week['friday'])
+            ->get()
+            ->toArray();
     }
 
+    /**
+     * Get current dates whithin current week
+     */
     public function getCurrentWeekDates(): array
     {
         $now = Carbon::now('Europe/Warsaw');
@@ -46,6 +52,14 @@ class FilmShowController extends Controller
         $saturday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 6);
         $sunday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 7);
 
-        return [$monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday];
+        return [
+            'monday' => $monday,
+            'tuesday' => $tuesday,
+            'wednesday' => $wednesday,
+            'thursday' => $thursday,
+            'friday' => $friday,
+            'saturday' => $saturday,
+            'sunday' => $sunday
+        ];
     }
 }

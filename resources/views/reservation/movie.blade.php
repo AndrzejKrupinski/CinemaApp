@@ -23,7 +23,7 @@
                     <th class="Saturday col-md-1">Saturday</th>
                     <th class="Sunday col-md-1">Sunday</th>
                 </tr>
-                <tr>
+<!--                <tr>
                     <td>
                         <ul>
                             <li>Monday</li>
@@ -66,8 +66,9 @@
                             <li>Sunday</li>
                         </ul>
                     </td>
-                </tr>
+                </tr>-->
             </table>
+        {{ var_dump($filmShows) }}
         </div>
     </div>
 </div>
