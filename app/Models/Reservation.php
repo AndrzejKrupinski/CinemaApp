@@ -9,7 +9,7 @@ class Reservation extends Model
     /** @var array */
     protected $fillable = ['film_show_id', 'name', 'email',];
 
-    public function filmShow(): FilmShow
+    public function filmShow(): BelongsTo
     {
         return $this->belongsTo('App\Models\FilmShow', 'id', 'film_show_id');
     }

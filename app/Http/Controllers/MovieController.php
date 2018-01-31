@@ -29,12 +29,30 @@ class MovieController extends Controller
         return view('reservation.movielist', [
             'movies' => $movies,
             'currentWeek' => $this->filmShowController->parseWeekDates(),
-            'filmShows' => $this->filmShowController->getCurrentShows(array_column($movies->toArray(), 'id')),
+            'filmShows' => $this->getCurrentFilmShowsForMovies($movies),
         ]);
     }
 
     private function getAll(): Collection
     {
         return $this->model::all();
+    }
+
+    private function getCurrentFilmShowsForMovies(Collection $movies): array
+    {
+        $currentFilmShowsForMovies = [];
+        $currentFilmShows = $this->filmShowController->getCurrentShows(array_column($movies->toArray(), 'id'));
+
+        foreach ($movies as $movie) {
+            $moviesFilmShows = $movie->filmShows->toArray();
+
+            $currentFilmShowsForMovies[$movie->id] = array_uintersect($moviesFilmShows,
+                $currentFilmShows,
+                function ($moviesFilmShows, $currentFilmShows) {
+                    return strcmp((string)$moviesFilmShows['id'], (string)$currentFilmShows['id']);
+                });
+        }
+        
+        return $currentFilmShowsForMovies;
     }
 }

@@ -62,7 +62,6 @@ class FilmShowController extends Controller
             ->whereIn('movie_id', $movieIds)
             ->where('time', '>=', $this->currentWeek['monday'])
             ->where('time', '<=', $this->currentWeek['friday'])
-            //->groupBy('movie_id')
             ->orderBy('time', 'asc')
             ->get()
             ->toArray();
