@@ -26,44 +26,65 @@
                 <tr>
                     <td>
                         <ul>
-                            <li>Monday</li>
-                            <li>Monday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] < $currentWeek['tuesday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Tuesday</li>
-                            <li>Tuesday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] > $currentWeek['tuesday'] && $filmShow['time'] < $currentWeek['wednesday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Wednesday</li>
-                            <li>Wednesday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] > $currentWeek['wednesday'] && $filmShow['time'] < $currentWeek['thursday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Thursday</li>
-                            <li>Thursday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] > $currentWeek['thursday'] && $filmShow['time'] < $currentWeek['friday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Friday</li>
-                            <li>Friday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] > $currentWeek['friday'] && $filmShow['time'] < $currentWeek['saturday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Saturday</li>
-                            <li>Saturday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] > $currentWeek['saturday'] && $filmShow['time'] < $currentWeek['sunday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Sunday</li>
-                            <li>Sunday</li>
+                            @foreach ($filmShows[$movie->id] as $filmShow)
+                                @if ($filmShow['time'] > $currentWeek['sunday'])
+                                    <li>{{ $filmShow['time'] }}</li>
+                                @endif
+                            @endforeach
                         </ul>
                     </td>
                 </tr>

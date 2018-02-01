@@ -33,14 +33,15 @@ class FilmShowController extends Controller
      */
     public function getCurrentWeekDates(): array
     {
-        $now = Carbon::now('Europe/Warsaw');
-        $monday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear);
-        $tuesday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 2);
-        $wednesday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 3);
-        $thursday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 4);
-        $friday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 5);
-        $saturday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 6);
-        $sunday = Carbon::now('Europe/Warsaw')->setISODate($now->year, $now->weekOfYear, 7);
+        $today = Carbon::today('Europe/Warsaw');
+        $monday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear);
+        $tuesday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 2);
+        $wednesday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 3);
+        $thursday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 4);
+        $friday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 5);
+        $saturday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 6);
+        $sunday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 7);
+        $nextMonday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 8);
 
         return [
             'monday' => $monday,
@@ -49,7 +50,8 @@ class FilmShowController extends Controller
             'thursday' => $thursday,
             'friday' => $friday,
             'saturday' => $saturday,
-            'sunday' => $sunday
+            'sunday' => $sunday,
+            'nextMonday' => $nextMonday,
         ];
     }
 
@@ -61,7 +63,7 @@ class FilmShowController extends Controller
         return $this->model
             ->whereIn('movie_id', $movieIds)
             ->where('time', '>=', $this->currentWeek['monday'])
-            ->where('time', '<=', $this->currentWeek['friday'])
+            ->where('time', '<', $this->currentWeek['nextMonday'])
             ->orderBy('time', 'asc')
             ->get()
             ->toArray();
@@ -70,13 +72,13 @@ class FilmShowController extends Controller
     public function parseWeekDates(): array
     {
         return [
-            'monday'=> $this->currentWeek['monday']->format('d.m'),
-            'tuesday'=> $this->currentWeek['tuesday']->format('d.m'),
-            'wednesday'=> $this->currentWeek['wednesday']->format('d.m'),
-            'thursday'=> $this->currentWeek['thursday']->format('d.m'),
-            'friday'=> $this->currentWeek['friday']->format('d.m'),
-            'saturday'=> $this->currentWeek['saturday']->format('d.m'),
-            'sunday'=> $this->currentWeek['sunday']->format('d.m'),
+            'monday'=> $this->currentWeek['monday']->format('Y-m-d'),
+            'tuesday'=> $this->currentWeek['tuesday']->format('Y-m-d'),
+            'wednesday'=> $this->currentWeek['wednesday']->format('Y-m-d'),
+            'thursday'=> $this->currentWeek['thursday']->format('Y-m-d'),
+            'friday'=> $this->currentWeek['friday']->format('Y-m-d'),
+            'saturday'=> $this->currentWeek['saturday']->format('Y-m-d'),
+            'sunday'=> $this->currentWeek['sunday']->format('Y-m-d'),
         ];
     }
 }
