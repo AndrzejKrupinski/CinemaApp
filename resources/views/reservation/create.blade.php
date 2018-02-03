@@ -5,8 +5,20 @@
         <form method="POST" action="{{ route('reservation.store', [
             'filmShow' => $reservation->filmShow,
         ]) }}">
-            <p>{{ $reservation->filmShow->movie->name }}</p> <!--TITLE-->
+            {{ csrf_field() }}
+            <p>{{ $reservation->filmShow->movie->title }}</p>
+            <p>{{ $reservation->filmShow->movie->duration }} min</p>
             <p>{{ $reservation->filmShow->time }}</p>
+
+            <div id="cinemaHall">
+                @foreach ($cinemaHall as $row)
+                    <ul name="">
+                        @foreach ($row as $seat)
+                            <input name="" type="checkbox">
+                        @endforeach
+                    </ul>
+                @endforeach
+            </div>
 
             <div>
                 <label for="name">Name</label>
@@ -15,6 +27,9 @@
             <div>
                 <label for="email">E-mail</label>
                 <input id="email" type="text" name="email"/>
+            </div>
+            <div>
+                <p>SEATS</p>
             </div>
             <div>
                 <button type="button">Back - JS??!!!</button><br>

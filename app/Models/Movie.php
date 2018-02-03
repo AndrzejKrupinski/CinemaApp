@@ -13,7 +13,7 @@ class Movie extends Model
 
     /** @var array */
     protected $fillable = [
-        'name', //ZMIENIĆ NA TITLE
+        'title',
         'description',
         'year',
         'country',

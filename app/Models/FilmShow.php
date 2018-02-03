@@ -15,6 +15,15 @@ class FilmShow extends Model
     /** @var array */
     protected $fillable = ['movie_id', 'time',];
 
+    /** @var array */
+    public $cinemaHall = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+    ];
+
     public function movie(): BelongsTo
     {
         return $this->belongsTo('App\Models\Movie', 'movie_id', 'id');

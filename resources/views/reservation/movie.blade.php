@@ -1,7 +1,6 @@
 <div id="movie-{{ $movie->id }}">
-    <p id="{{ $movie->id }}-name" style="font-family: bold;">
-        {{ $movie->name }}
-        <!--CHANGE IT TO TITLE!!!!!--></p>
+    <p id="{{ $movie->id }}-title" style="font-family: bold;">
+        {{ $movie->title }}</p>
     <p id="{{ $movie->id }}-desc">{{ $movie->description }}</p>
     <p id="{{ $movie->id }}-year">{{ $movie->year }}</p>
     <p id="{{ $movie->id }}-country">{{ $movie->country }}</p>
