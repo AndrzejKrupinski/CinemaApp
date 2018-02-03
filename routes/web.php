@@ -22,3 +22,4 @@ Route::get('/movie', 'MovieController@index')->name('movie');
 //Route::get('/reservation', 'ReservationController@index')->name('reservation');
 //Route::resource('reservation', 'ReservationController');
 Route::get('/photo/create/{filmShowId}', 'ReservationController@create')->name('reservation.create');
+Route::post('/photo', 'ReservationController@store')->name('reservation.store');

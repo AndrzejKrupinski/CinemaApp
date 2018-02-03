@@ -25,6 +25,7 @@ class ReservationController extends Controller
 
     public function store(Request $request): bool
     {
+        dd($request->all());
         //WALIDACJA
     }
 }
