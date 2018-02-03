@@ -17,6 +17,7 @@ class CreateTableFilmShows extends Migration
             $table->increments('id');
             $table->integer('movie_id');
             $table->dateTime('time');
+            $table->text('cinema_hall');
             $table->timestamps();
         });
     }

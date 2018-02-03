@@ -14,7 +14,7 @@
                 @foreach ($cinemaHall as $row)
                     <ul name="">
                         @foreach ($row as $seat)
-                            <input name="" type="checkbox">
+                            <input name="" type="checkbox" @if ($seat != 0) disabled @endif>
                         @endforeach
                     </ul>
                 @endforeach

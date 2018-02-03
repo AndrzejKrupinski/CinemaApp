@@ -23,7 +23,7 @@ class ReservationController extends Controller
 
         return view('reservation.create', [
             'reservation' => $reservation,
-            'cinemaHall' => Cinema::CINEMA_HALL,
+            'cinemaHall' => json_decode($reservation->filmShow->cinema_hall),
         ]);
     }
 

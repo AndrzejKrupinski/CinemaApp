@@ -13,16 +13,7 @@ class FilmShow extends Model
     protected $table = 'film_shows';
 
     /** @var array */
-    protected $fillable = ['movie_id', 'time',];
-
-    /** @var array */
-    public $cinemaHall = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-    ];
+    protected $fillable = ['movie_id', 'time', 'cinema_hall'];
 
     public function movie(): BelongsTo
     {
