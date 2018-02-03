@@ -2,19 +2,18 @@
 
 @section('content')
     <div>
-        <form method="POST" action="{{ route('reservation.store', [
-            'filmShow' => $reservation->filmShow,
-        ]) }}">
+        <form method="POST" action="{{ route('reservation.store') }}">
             {{ csrf_field() }}
             <p>{{ $reservation->filmShow->movie->title }}</p>
             <p>{{ $reservation->filmShow->movie->duration }} min</p>
             <p>{{ $reservation->filmShow->time }}</p>
 
             <div id="cinemaHall">
-                @foreach ($cinemaHall as $row)
+                @foreach ($cinemaHall as $rowNumber => $row)
                     <ul name="">
-                        @foreach ($row as $seat)
-                            <input name="" type="checkbox" @if ($seat != 0) disabled @endif>
+                        @foreach ($row as $seatNumber => $seat)
+                            <input name="seats[{{ $rowNumber }}][{{ $seatNumber }}]" type="checkbox"
+                                @if ($seat != 0) disabled @endif>
                         @endforeach
                     </ul>
                 @endforeach

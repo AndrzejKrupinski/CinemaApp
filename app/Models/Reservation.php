@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Reservation extends Model
 {
     /** @var array */
-    protected $fillable = ['film_show_id', 'seats', 'name', 'email',];
+    protected $fillable = ['film_show_id', 'code', 'seats', 'name', 'email',];
 
     public function filmShow(): BelongsTo
     {
