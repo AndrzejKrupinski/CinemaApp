@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class FilmShow extends Model
 {
@@ -14,9 +15,9 @@ class FilmShow extends Model
     /** @var array */
     protected $fillable = ['movie_id', 'time',];
 
-    public function movie(): Movie
+    public function movie(): BelongsTo
     {
-        return $this->belongsTo('App\Models\Movie', 'id', 'movie_id');
+        return $this->belongsTo('App\Models\Movie', 'movie_id', 'id');
     }
 
     public function reservations(): HasMany

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,13 +13,18 @@ class ReservationController extends Controller
         return view('reservation.reservation');
     }
 
-    public function create()
+    public function create(int $filmShowId): VIew
     {
-        
+        $reservation = app()->make(Reservation::class);
+        $reservation->film_show_id = $filmShowId;
+
+        return view('reservation.create', [
+            'reservation' => $reservation,
+        ]);
     }
 
-    public function store()
+    public function store(Request $request): bool
     {
-        
+        //WALIDACJA
     }
 }

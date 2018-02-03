@@ -28,7 +28,13 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] < $currentWeek['tuesday'])
-                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
+                                    <li>
+                                        <a href="{{ route('reservation.create', [
+                                            'filmShowId' => $filmShow['id'],
+                                        ]) }}">
+                                            {{ substr($filmShow['time'], 11, 5) }}
+                                        </a>
+                                    </li>
                                 @endif
                             @endforeach
                         </ul>

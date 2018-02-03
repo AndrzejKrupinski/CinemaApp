@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Reservation extends Model
 {
@@ -11,6 +12,6 @@ class Reservation extends Model
 
     public function filmShow(): BelongsTo
     {
-        return $this->belongsTo('App\Models\FilmShow', 'id', 'film_show_id');
+        return $this->belongsTo('App\Models\FilmShow', 'film_show_id', 'id');
     }
 }
