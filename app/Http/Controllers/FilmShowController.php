@@ -23,10 +23,12 @@ class FilmShowController extends Controller
         $this->currentWeek = $this->getCurrentWeekDates();
     }
 
+    /*
     public function index(): View
     {
         return view('reservation.filmshow');
     }
+     */
 
     /**
      * Get current dates whithin current week

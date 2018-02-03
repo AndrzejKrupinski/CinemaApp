@@ -11,4 +11,14 @@ class ReservationController extends Controller
     {
         return view('reservation.reservation');
     }
+
+    public function create()
+    {
+        
+    }
+
+    public function store()
+    {
+        
+    }
 }

@@ -28,7 +28,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] < $currentWeek['tuesday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>
@@ -37,7 +37,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] > $currentWeek['tuesday'] && $filmShow['time'] < $currentWeek['wednesday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>
@@ -46,7 +46,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] > $currentWeek['wednesday'] && $filmShow['time'] < $currentWeek['thursday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>
@@ -55,7 +55,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] > $currentWeek['thursday'] && $filmShow['time'] < $currentWeek['friday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>
@@ -64,7 +64,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] > $currentWeek['friday'] && $filmShow['time'] < $currentWeek['saturday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>
@@ -73,7 +73,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] > $currentWeek['saturday'] && $filmShow['time'] < $currentWeek['sunday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>
@@ -82,7 +82,7 @@
                         <ul>
                             @foreach ($filmShows[$movie->id] as $filmShow)
                                 @if ($filmShow['time'] > $currentWeek['sunday'])
-                                    <li>{{ $filmShow['time'] }}</li>
+                                    <li>{{ substr($filmShow['time'], 11, 5) }}</li>
                                 @endif
                             @endforeach
                         </ul>

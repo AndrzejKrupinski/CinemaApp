@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('/movie', 'MovieController@index')->name('movie');
-
-Route::get('/filmshow', 'FilmShowController@index')->name('filmshow');
-
-Route::get('/reservation', 'ReservationController@index')->name('reservation');
+//Route::get('/filmshow/{id}', 'FilmShowController@index')->name('filmshow');
+//Route::post('/filmshow/{id}', 'FilmShowController@index')->name('filmshow');
+//Route::get('/reservation', 'ReservationController@index')->name('reservation');
+Route::resource('reservation', 'ReservationController');

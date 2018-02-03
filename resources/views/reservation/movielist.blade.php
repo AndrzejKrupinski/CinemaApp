@@ -3,7 +3,13 @@
 @section('content')
 <div class="movie-container">
     <div class="container-title">
-        <h2>Please select the movie you'd like to see!</h2>
+        <h2>Please select the movie you'd like to watch!</h2>
+        <h3>
+            Zrobić listę filmów z podziałem na dni i według godzin jeszcze przed widokiem!
+            Przerzucić logikę z kontrolerów do serwisów!
+            Poza tym rezerwowanie i email!
+            Dokumentacja!
+        </h3>
     </div>
 
     <div class="container-panel">
