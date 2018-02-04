@@ -23,13 +23,6 @@ class FilmShowController extends Controller
         $this->currentWeek = $this->getCurrentWeekDates();
     }
 
-    /*
-    public function index(): View
-    {
-        return view('reservation.filmshow');
-    }
-     */
-
     /**
      * Get current dates whithin current week
      */
@@ -82,5 +75,32 @@ class FilmShowController extends Controller
             'saturday'=> $this->currentWeek['saturday']->format('Y-m-d'),
             'sunday'=> $this->currentWeek['sunday']->format('Y-m-d'),
         ];
+    }
+
+    public function reserveSeats(array $seats): FilmShowController
+    {
+        $cinemaHall = json_decode($this->model->cinema_hall);
+
+        foreach ($seats as $rowNumber => $row) {
+            foreach ($row as $seatNumber => $seat) {
+                $cinemaHall[$rowNumber][$seatNumber] = 1;
+            }
+        }
+
+        $this->model->cinema_hall = json_encode($cinemaHall);
+
+        return $this;
+    }
+
+    public function getModel(): FilmShow
+    {
+        return $this->model;
+    }
+
+    public function setModel(FilmShow $filmShow): FilmShowController
+    {
+        $this->model = $filmShow;
+
+        return $this;
     }
 }

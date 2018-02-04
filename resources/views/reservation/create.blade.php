@@ -2,7 +2,9 @@
 
 @section('content')
     <div>
-        <form method="POST" action="{{ route('reservation.store') }}">
+        <form method="POST" action="{{ route('reservation.store', [
+            'filmShow' => $reservation->filmShow,
+        ]) }}">
             {{ csrf_field() }}
             <p>{{ $reservation->filmShow->movie->title }}</p>
             <p>{{ $reservation->filmShow->movie->duration }} min</p>

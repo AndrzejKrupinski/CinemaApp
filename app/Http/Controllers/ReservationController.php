@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use App\Models\FilmShow;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationConfirmation;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +19,7 @@ class ReservationController extends Controller
 
     public function create(int $filmShowId): View
     {
-        $reservation = app()->make(Reservation::class);
+        $reservation = app()->make(Reservation::class); //czy to w ogóle potrzebne?
         $reservation->film_show_id = $filmShowId;
 
         return view('reservation.create', [
@@ -42,30 +44,24 @@ class ReservationController extends Controller
             'email' => $inputs['email'],
         ]);
 
-        $filmShow = FilmShow::find($inputs['filmShow']);
-        $filmShow->fill(
-            'cinemaHall' => METODA_ZAPISUJĄCA_WŁAŚNIE_ZAJMOWANE_MIEJSCA
-        );
+        $filmShowController = resolve(FilmShowController::class);
+        $filmShowController->setModel(FilmShow::find($inputs['filmShow']));
+        $filmShowController->reserveSeats($inputs['seats']);
+        $filmShow = $filmShowController->getModel();
 
-        dd($reservation);
+        //dd($reservation, $filmShow);
 
         try {
-            DB::transaction(function () {
-//            DB::table('users')->update(['votes' => 1]);
-//
-//            DB::table('posts')->delete();
-
-                //stworzyć rezerwację i zapisać
-                //nadpisać cinema_hall w FilmShow
-
+            DB::transaction(function ($reservation, $filmShow) {
+                $reservation->save();
+                $filmShow->save();
             });
         } catch (Exception $e) {
             return $e->getMessage();
         }
 
-        //send e-mail!!!
+        Mail::to($reservation->email)->send(new ReservationConfirmation($reservation));
 
-        //ZAPISANIE JUŻ W SERWISIE NA MODELU $this->model (Reservation), A TUTAJ SPRAWDZENIE CZY SIĘ UDAŁO
         return view('reservation.confirmation', [
             'reservation' => $reservation,
         ]);
