@@ -3,4 +3,5 @@
 3) List FilmShows by days before sending to the view!
 4) Handling exceptions!
 5) PHPDocs!
-6) Unique e-mails per one FilmShow.
+6) Unique e-mails per one FilmShow;
+7) Movie photos.

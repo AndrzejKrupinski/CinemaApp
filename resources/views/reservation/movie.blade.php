@@ -1,4 +1,7 @@
 <div id="movie-{{ $movie->id }}">
+    <div class="photo">
+        Place for photo
+    </div>
     <h3 id="{{ $movie->id }}-title" style="font-family: bold;">
         {{ $movie->title }}</h3>
     <p id="{{ $movie->id }}-desc">Description: {{ $movie->description }}</p>
