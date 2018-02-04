@@ -15,14 +15,25 @@ class ReservationConfirmation extends Mailable
     /** @var Reservation */
     public $reservation;
 
+    /** @var int */
+    public $ticketsAmount;
+
+    /** @var string */
+    public $weekDay;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Reservation $reservation)
-    {
+    public function __construct(
+        Reservation $reservation,
+        int $ticketsAmount,
+        string $weekDay
+    ) {
         $this->reservation = $reservation;
+        $this->ticketsAmount = $ticketsAmount;
+        $this->weekDay = $weekDay;
     }
 
     /**
@@ -34,6 +45,8 @@ class ReservationConfirmation extends Mailable
     {
         return $this->view('email.confirmation', [
             'reservation' => $this->reservation,
+            'ticketsAmount' => $this->ticketsAmount,
+            'weekDay' => $this->weekDay,
         ]);
     }
 }

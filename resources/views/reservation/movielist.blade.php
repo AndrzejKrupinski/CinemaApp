@@ -6,8 +6,7 @@
         <h2>Please select the movie you'd like to watch!</h2>
         <h3>
             Zrobić listę filmów z podziałem na dni i według godzin jeszcze przed widokiem!
-            Przerzucić logikę z kontrolerów do serwisów!
-            W serwisach już nie requesty!
+            Uporządkować routingi
             FILMSZOŁY DLA NOWYCH TYGODNI W BAZIE!
             WYJĄTKI!
             Dokumentacja!
