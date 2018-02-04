@@ -52,7 +52,8 @@ class ReservationController extends Controller
         //dd($reservation, $filmShow);
 
         try {
-            DB::transaction(function ($reservation, $filmShow) {
+            //dd($reservation, $filmShow);
+            DB::transaction(function () use ($reservation, $filmShow) {
                 $reservation->save();
                 $filmShow->save();
             });
