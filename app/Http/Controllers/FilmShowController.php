@@ -2,52 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FilmShow;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
+use App\Services\FilmShowService;
 
 class FilmShowController extends Controller
 {
-    /** @var FilmShow */
-    private $model;
+    /** @var FilmShowService */
+    private $service;
 
-    /** @var array */
-    public $currentWeek;
-
-    public function __construct(FilmShow $filmShow)
+    public function __construct(FilmShowService $filmShowService)
     {
-        $this->model = $filmShow;
-        $this->currentWeek = $this->getCurrentWeekDates();
-    }
-
-    /**
-     * Get current dates whithin current week
-     */
-    public function getCurrentWeekDates(): array
-    {
-        $today = Carbon::today('Europe/Warsaw');
-        $monday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear);
-        $tuesday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 2);
-        $wednesday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 3);
-        $thursday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 4);
-        $friday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 5);
-        $saturday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 6);
-        $sunday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 7);
-        $nextMonday = Carbon::today('Europe/Warsaw')->setISODate($today->year, $today->weekOfYear, 8);
-
-        return [
-            'monday' => $monday,
-            'tuesday' => $tuesday,
-            'wednesday' => $wednesday,
-            'thursday' => $thursday,
-            'friday' => $friday,
-            'saturday' => $saturday,
-            'sunday' => $sunday,
-            'nextMonday' => $nextMonday,
-        ];
+        $this->service = $filmShowService;
     }
 
     /**
@@ -55,52 +19,14 @@ class FilmShowController extends Controller
      */
     public function getCurrentShows(array $movieIds): array
     {
-        return $this->model
-            ->whereIn('movie_id', $movieIds)
-            ->where('time', '>=', $this->currentWeek['monday'])
-            ->where('time', '<', $this->currentWeek['nextMonday'])
-            ->orderBy('time', 'asc')
-            ->get()
-            ->toArray();
+        return $this->service->getCurrentShows($movieIds);
     }
 
+    /**
+     * Parse dates into proper format
+     */
     public function parseWeekDates(): array
     {
-        return [
-            'monday'=> $this->currentWeek['monday']->format('Y-m-d'),
-            'tuesday'=> $this->currentWeek['tuesday']->format('Y-m-d'),
-            'wednesday'=> $this->currentWeek['wednesday']->format('Y-m-d'),
-            'thursday'=> $this->currentWeek['thursday']->format('Y-m-d'),
-            'friday'=> $this->currentWeek['friday']->format('Y-m-d'),
-            'saturday'=> $this->currentWeek['saturday']->format('Y-m-d'),
-            'sunday'=> $this->currentWeek['sunday']->format('Y-m-d'),
-        ];
-    }
-
-    public function reserveSeats(array $seats): FilmShowController
-    {
-        $cinemaHall = json_decode($this->model->cinema_hall);
-
-        foreach ($seats as $rowNumber => $row) {
-            foreach ($row as $seatNumber => $seat) {
-                $cinemaHall[$rowNumber][$seatNumber] = 1;
-            }
-        }
-
-        $this->model->cinema_hall = json_encode($cinemaHall);
-
-        return $this;
-    }
-
-    public function getModel(): FilmShow
-    {
-        return $this->model;
-    }
-
-    public function setModel(FilmShow $filmShow): FilmShowController
-    {
-        $this->model = $filmShow;
-
-        return $this;
+        return $this->service->parseWeekDates();
     }
 }

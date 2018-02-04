@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
-use App\Models\FilmShow;
+use App\Services\MovieService;
 use App\Http\Controllers\FilmShowController;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\View\View;
 
 class MovieController extends Controller
 {
-    /** @var Movie */
-    private $model;
+    /** @var MovieService */
+    private $service;
 
     public function __construct(
-        Movie $movie,
+        MovieService $service,
         FilmShowController $filmShowController
     ) {
-        $this->model = $movie;
+        $this->service = $service;
         $this->filmShowController = $filmShowController;
     }
 
-        public function index(): View
+    public function index(): View
     {
         $movies = $this->getAll();
 
@@ -35,24 +33,14 @@ class MovieController extends Controller
 
     private function getAll(): Collection
     {
-        return $this->model::all();
+        return $this->service->getAll();
     }
 
     private function getCurrentFilmShowsForMovies(Collection $movies): array
     {
-        $currentFilmShowsForMovies = [];
-        $currentFilmShows = $this->filmShowController->getCurrentShows(array_column($movies->toArray(), 'id'));
-
-        foreach ($movies as $movie) {
-            $moviesFilmShows = $movie->filmShows->toArray();
-
-            $currentFilmShowsForMovies[$movie->id] = array_uintersect($moviesFilmShows,
-                $currentFilmShows,
-                function ($moviesFilmShows, $currentFilmShows) {
-                    return strcmp((string)$moviesFilmShows['id'], (string)$currentFilmShows['id']);
-                });
-        }
-        
-        return $currentFilmShowsForMovies;
+        return $this->service->getCurrentFilmShowsForMovies(
+            $this->filmShowController->getCurrentShows(array_column($movies->toArray(), 'id')),
+            $movies
+        );
     }
 }
