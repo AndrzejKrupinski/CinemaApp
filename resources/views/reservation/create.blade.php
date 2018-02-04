@@ -20,7 +20,6 @@
                     </ul>
                 @endforeach
             </div>
-
             <div>
                 <label for="name">Name</label>
                 <input id="name"type="text" name="name"/>
@@ -30,10 +29,6 @@
                 <input id="email" type="text" name="email"/>
             </div>
             <div>
-                <p>SEATS</p>
-            </div>
-            <div>
-                <button type="button">Back - JS??!!!</button><br>
                 <button type="submit">Submit!</button>
             </div>
         </form>

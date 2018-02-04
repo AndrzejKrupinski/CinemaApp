@@ -23,11 +23,14 @@ class MovieController extends Controller
     public function index(): View
     {
         $movies = $this->getAll();
+        $currentWeek = $this->filmShowController->parseWeekDates();
+        $filmShows = $this->getCurrentFilmShowsForMovies($movies);
+        $currentFilmShows = [];
 
         return view('reservation.movielist', [
             'movies' => $movies,
-            'currentWeek' => $this->filmShowController->parseWeekDates(),
-            'filmShows' => $this->getCurrentFilmShowsForMovies($movies),
+            'currentWeek' => $currentWeek,
+            'filmShows' => $filmShows,
         ]);
     }
 
