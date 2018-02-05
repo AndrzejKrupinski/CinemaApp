@@ -40,7 +40,6 @@ class ReservationService
 
         try {
             DB::transaction(function () use ($reservation, $filmShow) {
-                
                 $reservation->save();
                 $filmShow->save();
             });

@@ -26,7 +26,7 @@ class ReservationRequest extends FormRequest
         return [
             'seats' => 'required',
             'name' => 'required|string',
-            'email' => 'required|email',    //WYJĄTEK???
+            'email' => 'required|email',        //EXCEPTION
         ];
     }
 }

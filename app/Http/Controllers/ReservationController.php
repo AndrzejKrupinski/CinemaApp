@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use App\Services\ReservationService;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\View\View;
+use Illuminate\Support\Carbon;
 
 class ReservationController extends Controller
 {
@@ -21,10 +22,12 @@ class ReservationController extends Controller
     {
         $reservation = app()->make(Reservation::class);
         $reservation->film_show_id = $filmShowId;
+        $active = $reservation->filmShow->time > Carbon::now('Europe/Warsaw')->toDateTimeString();
 
         return view('reservation.create', [
             'reservation' => $reservation,
-            'cinemaHall' => json_decode($reservation->filmShow->cinema_hall),
+            'active' => $active,
+            'cinemaHall' => $active ? json_decode($reservation->filmShow->cinema_hall) : null,
         ]);
     }
 

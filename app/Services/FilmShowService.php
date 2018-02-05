@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\FilmShow;
 use Illuminate\Support\Carbon;
+use Whoops\Exception\ErrorException;
 
 class FilmShowService
 {
@@ -85,6 +86,10 @@ class FilmShowService
 
         foreach ($seats as $rowNumber => $row) {
             foreach ($row as $seatNumber => $seat) {
+                if ($cinemaHall[$rowNumber][$seatNumber] != 0) {
+                    throw new ErrorException('Seats already reserved!');
+                }
+
                 $cinemaHall[$rowNumber][$seatNumber] = 1;
             }
         }

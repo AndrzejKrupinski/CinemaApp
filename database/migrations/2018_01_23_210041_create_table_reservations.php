@@ -16,7 +16,7 @@ class CreateTableReservations extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('film_show_id')->index();
-            $table->string('code', 400)->unique();
+            $table->string('code', 500)->unique();
             $table->text('seats');
             $table->string('name', 100)->index();
             $table->string('email', 100)->index();
