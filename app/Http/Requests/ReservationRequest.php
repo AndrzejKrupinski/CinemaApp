@@ -26,7 +26,7 @@ class ReservationRequest extends FormRequest
         return [
             'seats' => 'required',
             'name' => 'required|string',
-            'email' => 'required|email',        //EXCEPTION
+            'email' => 'required|email|unique:reservation,email',   //EXCEPTION & UNIQUE PER FILMSHOW VALIDATION
         ];
     }
 }

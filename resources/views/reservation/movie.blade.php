@@ -1,6 +1,10 @@
 <div id="movie-{{ $movie->id }}">
     <div class="photo">
-        Place for photo
+        <p>
+            If I wanted to put here link to the photo stored in public/, I should
+            create artisan command updating links in database according to current
+            url and tell user to run it evetime installed the app.
+        </p>
     </div>
     <h3 id="{{ $movie->id }}-title" style="font-family: bold;">
         {{ $movie->title }}</h3>
