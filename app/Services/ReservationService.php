@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Support\Carbon;
+use Whoops\Exception\ErrorException;
 
 class ReservationService
 {
@@ -54,7 +55,7 @@ class ReservationService
         ));
 
         if (Mail::failures()) {
-            //return SOMETHING BAD;
+            throw new ErrorException('There was a problem with sending an e-mail!');
         }
 
         return view('reservation.confirmation', [

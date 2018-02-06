@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Whoops\Exception\ErrorException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -48,6 +49,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ErrorException) {
+            return response()->view('errors.common_error', [
+                'message' => $exception->getMessage()
+            ], 500);
+        }
+
         return parent::render($request, $exception);
     }
 }
