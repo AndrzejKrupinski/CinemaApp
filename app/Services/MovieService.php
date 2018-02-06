@@ -42,4 +42,47 @@ class MovieService
 
         return $currentFilmShowsForMovies;
     }
+
+    public function combineFilmShowsWithWeekDays(
+        Collection $movies,
+        array $filmShows,
+        array $currentWeek
+    ): array
+    {
+        $filmShowsPerWeekdays = [];
+
+        foreach ($movies as $movie) {
+            $filmShowsPerWeekdays[$movie->id] = [];
+        }
+
+        foreach ($filmShows as $singleMovieFilmShows) {
+            foreach ($singleMovieFilmShows as $filmShow) {
+                switch (true) {
+                    case ($filmShow['time'] < $currentWeek['tuesday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['monday'][] = $filmShow;
+                        break;
+                    case ($filmShow['time'] > $currentWeek['tuesday'] && $filmShow['time'] < $currentWeek['wednesday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['tuesday'][] = $filmShow;
+                        break;
+                    case ($filmShow['time'] > $currentWeek['wednesday'] && $filmShow['time'] < $currentWeek['thursday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['wednesday'][] = $filmShow;
+                        break;
+                    case ($filmShow['time'] > $currentWeek['thursday'] && $filmShow['time'] < $currentWeek['friday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['thursday'][] = $filmShow;
+                        break;
+                    case ($filmShow['time'] > $currentWeek['friday'] && $filmShow['time'] < $currentWeek['saturday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['friday'][] = $filmShow;
+                        break;
+                    case ($filmShow['time'] > $currentWeek['saturday'] && $filmShow['time'] < $currentWeek['sunday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['saturday'][] = $filmShow;
+                        break;
+                    case ($filmShow['time'] > $currentWeek['sunday']):
+                        $filmShowsPerWeekdays[$filmShow['movie_id']]['sunday'][] = $filmShow;
+                        break;
+                }
+            }
+        }
+
+        return $filmShowsPerWeekdays;
+    }
 }
