@@ -11,7 +11,7 @@
                 @include('reservation.movie', [
                     'movie' => $movie,
                     'currentWeek' => $currentWeek,
-                    'filmShows' => $filmShows,
+                    'filmShows' => $filmShowsPerWeekdays[$movie->id],
                 ])
             @endforeach
         </div>

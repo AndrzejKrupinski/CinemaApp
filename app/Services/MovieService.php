@@ -31,7 +31,7 @@ class MovieService
         $currentFilmShowsForMovies = [];
 
         foreach ($movies as $movie) {
-            $moviesFilmShows = $movie->filmShows->toArray();
+            $moviesFilmShows = $movie->filmShows->sortBy('time')->toArray();
 
             $currentFilmShowsForMovies[$movie->id] = array_uintersect($moviesFilmShows,
                 $currentFilmShows,

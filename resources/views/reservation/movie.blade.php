@@ -31,83 +31,65 @@
                 <tr>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] < $currentWeek['tuesday'])
-                                    <li>
-                                        <a href="{{ route('reservation.create', [
-                                            'filmShowId' => $filmShow['id'],
-                                        ]) }}">
-                                            {{ substr($filmShow['time'], 11, 5) }}
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['monday']))
+                                @foreach ($filmShows['monday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] > $currentWeek['tuesday'] && $filmShow['time'] < $currentWeek['wednesday'])
-                                    @include('reservation.filmshow', [
-                                        'filmShow' => $filmShow
-                                    ])
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['tuesday']))
+                                @foreach ($filmShows['tuesday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] > $currentWeek['wednesday'] && $filmShow['time'] < $currentWeek['thursday'])
-                                    @include('reservation.filmshow', [
-                                        'filmShow' => $filmShow
-                                    ])
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['wednesday']))
+                                @foreach ($filmShows['wednesday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] > $currentWeek['thursday'] && $filmShow['time'] < $currentWeek['friday'])
-                                    @include('reservation.filmshow', [
-                                        'filmShow' => $filmShow
-                                    ])
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['thursday']))
+                                @foreach ($filmShows['thursday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] > $currentWeek['friday'] && $filmShow['time'] < $currentWeek['saturday'])
-                                    @include('reservation.filmshow', [
-                                        'filmShow' => $filmShow
-                                    ])
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['friday']))
+                                @foreach ($filmShows['friday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] > $currentWeek['saturday'] && $filmShow['time'] < $currentWeek['sunday'])
-                                    @include('reservation.filmshow', [
-                                        'filmShow' => $filmShow
-                                    ])
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['saturday']))
+                                @foreach ($filmShows['saturday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            @foreach ($filmShows[$movie->id] as $filmShow)
-                                @if ($filmShow['time'] > $currentWeek['sunday'])
-                                    @include('reservation.filmshow', [
-                                        'filmShow' => $filmShow
-                                    ])
-                                @endif
-                            @endforeach
+                            @if (isset($filmShows['sunday']))
+                                @foreach ($filmShows['sunday'] as $filmShow)
+                                    @include('reservation.filmshow', ['filmShow' => $filmShow])
+                                @endforeach
+                            @endif
                         </ul>
                     </td>
                 </tr>
