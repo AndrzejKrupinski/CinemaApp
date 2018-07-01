@@ -1,8 +1,7 @@
 Current ones:
-1) Set up DB;
-2) Turn into SPA;
-3) Add admin panel;
-4) Add cinemas and movies edition;
+1) Turn into SPA;
+2) Add admin panel;
+3) Add cinemas and movies edition.
 
 Old ones when created for Berlin-agency (can't remember their name):
 1) Situation
