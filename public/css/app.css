@@ -9996,15 +9996,9 @@ a.text-dark:focus {
 
 html,
 body {
-<<<<<<< HEAD
   background-color: #42f492;
   color: #000711;
   font-family: 'Lato', sans-serif;
-=======
-  background-color: #3175e2;
-  color: #000711;
-  font-family: 'Raleway', sans-serif;
->>>>>>> 70f932f42bdc72a47746eadc50ab34f20070a39c
   font-weight: 100;
   height: 100vh;
   margin: 0;
