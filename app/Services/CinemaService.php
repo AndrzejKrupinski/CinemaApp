@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Movie;
+use App\Models\Cinema;
 use Illuminate\Database\Eloquent\Collection;
 
-class MovieService
+class CinemaService
 {
     /** @var Movie */
     private $model;

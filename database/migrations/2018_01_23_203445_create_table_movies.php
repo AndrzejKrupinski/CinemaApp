@@ -23,7 +23,7 @@ class CreateTableMovies extends Migration
             $table->string('director', 50)->index();
             $table->float('rating', 4, 2)->nullable()->index();
             $table->integer('duration')->index();
-            $table->string('photo');
+            $table->string('photo');    //add nullable()
             $table->timestamps();
         });
     }

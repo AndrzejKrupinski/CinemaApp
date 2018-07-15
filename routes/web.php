@@ -13,7 +13,8 @@
 */
 //Turning to SPA:
 Route::get('/', function() {
-    return view('home');
+    return view('home');    //THERE SHOULD BE /cinema routing to choose cinema
+                            //in the first step
 });
 
 //Route::get('/movie', 'MovieController@index')->name('movie');   //is name necessary??

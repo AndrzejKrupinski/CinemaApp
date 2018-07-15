@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use App\Services\CinemaService;
+use App\Services\CinemaService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
@@ -19,19 +19,8 @@ class CinemaController extends Controller
 
     public function index(): View
     {
-        $movies = $this->service->getAll();
-        $currentWeek = $this->filmShowController->parseWeekDates();
-
-        $filmShowsPerWeekdays = $this->service->combineFilmShowsWithWeekDays(
-            $movies,
-            $this->getCurrentFilmShowsForMovies($movies),
-            $currentWeek
-        );
-
         return view('reservation.movielist', [
-            'movies' => $movies,
-            'currentWeek' => $currentWeek,
-            'filmShowsPerWeekdays' => $filmShowsPerWeekdays,
+            'cinemas' => $this->service->getAll(),
         ]);
     }
 }
