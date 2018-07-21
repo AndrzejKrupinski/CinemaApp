@@ -12,7 +12,7 @@ class CinemaController extends Controller
     private $service;
 
     public function __construct(
-        CinemaService $service,
+        CinemaService $service
     ) {
         $this->service = $service;
     }
