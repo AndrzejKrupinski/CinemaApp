@@ -11,15 +11,14 @@ class CinemaController extends Controller
     /** @var CinemaService */
     private $service;
 
-    public function __construct(
-        CinemaService $service
-    ) {
+    public function __construct(CinemaService $service)
+    {
         $this->service = $service;
     }
 
     public function index(): View
     {
-        return view('reservation.movielist', [
+        return view('cinema.index', [
             'cinemas' => $this->service->getAll(),
         ]);
     }
