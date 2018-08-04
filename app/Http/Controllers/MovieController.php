@@ -20,9 +20,9 @@ class MovieController extends Controller
         $this->filmShowController = $filmShowController;
     }
 
-    public function index(): View
+    public function index(int $cinemaId): View
     {
-        $movies = $this->service->getAll();
+        $movies = $this->service->getAllForCinema($cinemaId);
         $currentWeek = $this->filmShowController->parseWeekDates();
 
         $filmShowsPerWeekdays = $this->service->combineFilmShowsWithWeekDays(

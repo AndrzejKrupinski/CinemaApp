@@ -12,6 +12,6 @@ class Reservation extends Model
 
     public function filmShow(): BelongsTo
     {
-        return $this->belongsTo('App\Models\FilmShow', 'film_show_id', 'id');
+        return $this->belongsTo(FilmShow::class, 'film_show_id', 'id');
     }
 }

@@ -26,6 +26,6 @@ class Movie extends Model
 
     public function filmShows(): HasMany
     {
-        return $this->hasMany('App\Models\FilmShow', 'movie_id', 'id');
+        return $this->hasMany(FilmShow::class, 'movie_id', 'id');
     }
 }
