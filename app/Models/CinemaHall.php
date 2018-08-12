@@ -15,11 +15,9 @@ class CinemaHalls extends Model
     /** @var array */
     protected $fillable = [
         'name',
-        'street',
-        'street_no',
-        'zipcode',
-        'city',
-        'country',
+        'cinema_id',
+        'seats_plan',
+        'description',
     ];
 
     public function cinemaHalls(): BelongsTo

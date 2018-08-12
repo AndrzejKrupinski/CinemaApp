@@ -14,7 +14,7 @@ class FilmShow extends Model
     protected $table = 'film_shows';
 
     /** @var array */
-    protected $fillable = ['movie_id', 'time', 'cinema_hall'];
+    protected $fillable = ['movie_id', 'time', 'cinema_hall_reservations'];
 
     public function movie(): BelongsTo
     {

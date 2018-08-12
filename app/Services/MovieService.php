@@ -18,6 +18,16 @@ class MovieService
         $this->model = $movie;
     }
 
+    /**
+     * Get the movies played in given cinema
+     */
+    public function getAllForCinema($cinemaId): Collection
+    {
+        //POTRZEBNA FUNKCJONALNOŚĆ POZWALAJĄCA ZNALEŹĆ FILMY PRZEZ SEANE PRZEZ
+        //POTRZEBNA SALE KINOWE DLA DANEGO KINA
+        return $this->model::where('XXX');
+    }
+
     public function getAll(): Collection
     {
         return $this->model::all();
@@ -47,8 +57,7 @@ class MovieService
         Collection $movies,
         array $filmShows,
         array $currentWeek
-    ): array
-    {
+    ): array {
         $filmShowsPerWeekdays = [];
 
         foreach ($movies as $movie) {

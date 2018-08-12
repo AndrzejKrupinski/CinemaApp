@@ -17,6 +17,7 @@ class CreateTableCinemaHalls extends Migration
             $table->increments('id');
             $table->integer('cinema_id')->index();
             $table->string('name', 100)->nullable();
+            $table->text('seats_plan');
             $table->string('description')->nullable();
             $table->timestamps();
         });

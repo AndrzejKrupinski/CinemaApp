@@ -15,7 +15,7 @@
                         </p>
                     </div>
                     <h3 id="{{ $cinema->id }}-name" style="font-family: bold;">
-                        <a href={{ route('') }}>{{ $cinema->name }}</a>
+                        <a href="{{ route('') }}">{{ $cinema->name }}</a>
                     </h3>
                     <p id="{{ $cinema->id }}-address">
                         Address:<br>{{ $cinema->street }} {{ $cinema->street_no }}<br>
