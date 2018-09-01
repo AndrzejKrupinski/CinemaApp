@@ -1,9 +1,15 @@
-@extends('layout')
+@extends('admin.layouts.app')
 
 @section('content')
-    <div class="movie-container">
+    <div class="container">
         <div class="container-title">
-            <h2 class="text-center">ADMIN PANEL</a></h2>
+            SIDEBAR NEEDED!<br>
+            <a href="#">Cinemas</a><br>
+            <a href="#">CinemaHalls</a><br>
+            <a href="#">FilmShows</a><br>
+            <a href="#">Movies</a><br>
+            <a href="#">Reservations</a><br>
+            <a href="#">Users</a>
         </div>
     </div>
 @endsection
