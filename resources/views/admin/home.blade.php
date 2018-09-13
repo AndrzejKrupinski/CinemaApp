@@ -12,7 +12,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="cinemaSubmenu">
                         <li>
-                            <a href="#">
+                            <a href="{{ route('cinema.index') }}">
                                 <i class="fas fa-place-of-worship"></i>
                                  Cinemas
                             </a>
