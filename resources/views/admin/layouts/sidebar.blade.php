@@ -1,8 +1,8 @@
 <div class="container align-self-start">
-    <button type="button" class="btn btn-outline-light btn-lg btn-block">
+    <a href="{{ route('cinema.index') }}" class="btn btn-outline-light btn-lg btn-block">
         Cinemas
-    </button><br>
-    <button type="button" class="btn btn-outline-light btn-lg btn-block">
+    </a><br>
+    <a href="{{ route('movie.index') }}" class="btn btn-outline-light btn-lg btn-block">
         Movies
-    </button>
+    </a>
 </div>

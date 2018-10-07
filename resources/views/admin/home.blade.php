@@ -1,16 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
-    <p>SECURITY</p>
+    <div class="">
+        <p class="text-center">WELCOME TO THE ADMIN PANEL</p>
+    </div>
 @endsection
