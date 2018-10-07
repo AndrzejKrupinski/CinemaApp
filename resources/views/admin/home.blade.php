@@ -1,5 +1,16 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <p>Tadam</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
+    <p>SECURITY</p>
 @endsection

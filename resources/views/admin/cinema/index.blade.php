@@ -11,7 +11,7 @@
                     <h3 id="{{ $cinema->id }}-name" style="font-family: bold;">
                         {{ $cinema->name }}
                     </h3>
-                    <p><a href="/admin/cinema/{{ $cinema->id }}/edit"></a></p>
+                    <p><a href="{{ route(cinema.create), ['cinemaId' => $cinema->id] }}"></a></p>
                     <p id="{{ $cinema->id }}-address">
                         Address:<br>{{ $cinema->street }} {{ $cinema->street_no }}<br>
                         {{ $cinema->zipcode }} {{ $cinema->city }}, {{ $cinema->country }}
