@@ -61,8 +61,7 @@
                     <div class="navbar position-fixed col-md-2 navbar-static-left" style="background-color: #3c678c; height: 100%; z-index: 7">
                         @include('admin.layouts.sidebar')
                     </div>
-                    <div class="col-md-2">
-                    </div>
+                    <div class="col-md-2"></div>
                     <div id="content" class="col-md-10">
                         @yield('content')
                     </div>
