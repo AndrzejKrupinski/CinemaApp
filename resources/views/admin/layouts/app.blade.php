@@ -67,9 +67,6 @@
                     </div>
                 </div>
             </main>
-            <footer class="position-fixed" style="background-color: #3c678c; width: 100%; bottom: 0; width: 100%; z-index: 7">
-                <p>asdasdasd</p>
-            </footer>
         </div>
     </body>
 </html>
