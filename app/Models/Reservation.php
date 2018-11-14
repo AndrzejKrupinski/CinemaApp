@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Reservation extends Model
 {
+    public function __construct()
+    {
+        $this->table = 'reservations';
+        $this->timestamps = true;
+        $this->incrementing = true;
+        $this->fillable = ['film_show_id', 'code', 'seats', 'name', 'email',];
+        parent::__construct();
+    }
+
     /** @var array */
     protected $fillable = ['film_show_id', 'code', 'seats', 'name', 'email',];
 

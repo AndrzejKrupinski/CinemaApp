@@ -6,16 +6,23 @@
             <h2>List of all cinemas</h2>
         </div>
         <div class="container-panel">
-            @if ($cinemas)
+            @if ($cinemas && !$cinemas->isEmpty())
                 @foreach ($cinemas as $cinema)
-                    <div id="cinema-{{ $cinema->id }}">
-                        <h3 id="{{ $cinema->id }}-name" style="font-family: bold;">
-                            {{ $cinema->name }}
-                        </h3>
-                        <p><a href="{{ route(cinema.create), ['cinemaId' => $cinema->id] }}"></a></p>
+                    <div id="cinema-{{ $cinema->id }}" class="card" style="background-color: #87afd1;">
+                        <a href="{{ route('cinema.edit', ['cinemaId' => $cinema->id]) }}" class="card-title" >
+                            <h4 id="{{ $cinema->id }}-name" style="font-family: bold;">
+                                {{ $cinema->name }}
+                            </h4>
+                        </a>
+                        <form method="POST" action="{{ route('cinema.destroy', ['cinemaId' => $cinema->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <div>
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </div>
+                        </form>
                         <p id="{{ $cinema->id }}-address">
-                            Address:<br>{{ $cinema->street }} {{ $cinema->street_no }}<br>
-                            {{ $cinema->zipcode }} {{ $cinema->city }}, {{ $cinema->country }}
+                            Address:<br>{{ $cinema->street }} {{ $cinema->street_no }}, {{ $cinema->zipcode }} {{ $cinema->city }}, {{ $cinema->country }}
                         </p>
                         <p id="{{ $cinema->id }}-year">
                             Year opened: {{ $cinema->created_at->year }}
@@ -34,8 +41,12 @@
         </div>
     </div>
     <footer class="position-fixed" style="width: 100%; bottom: 0; z-index: 7">
-        <a href="{{ route('cinema.create') }}" class="btn btn-secondary">
+        <input type="button" class="btn btn-secondary" value="Back" onclick="window.history.back()"/>
+        <a href="{{ route('cinema.create') }}" class="btn btn-success">
             Create new
+        </a>
+        <a href="#" class="btn btn-success">
+            Refresh list
         </a>
     </footer>
 @endsection

@@ -7,7 +7,7 @@ Route::prefix('cinema')->group(function () {
     Route::get('create', 'CinemaController@create')->name('cinema.create');
     Route::post('/', 'CinemaController@store')->name('cinema.store');
     Route::get('{cinemaId}/edit', 'CinemaController@edit')->name('cinema.edit');
-    Route::put('{cinemaId}', 'CinemaController@update')->name('cinema.update');
+    Route::put('/', 'CinemaController@update')->name('cinema.update');
     Route::delete('{cinemaId}', 'CinemaController@destroy')->name('cinema.destroy');
 });
 

@@ -9,16 +9,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class CinemaHalls extends Model
 {
-    /** @var string */
-    protected $table = 'cinema_halls';
-
-    /** @var array */
-    protected $fillable = [
-        'name',
-        'cinema_id',
-        'seats_plan',
-        'description',
-    ];
+    public function __construct()
+    {
+        $this->table = 'cinema_halls';
+        $this->timestamps = true;
+        $this->incrementing = true;
+        $this->fillable = [
+            'name',
+            'cinema_id',
+            'seats_plan',
+            'description',
+        ];
+        parent::__construct();
+    }
 
     public function cinemaHalls(): BelongsTo
     {

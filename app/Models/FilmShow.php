@@ -10,11 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class FilmShow extends Model
 {
-    /** @var string */
-    protected $table = 'film_shows';
-
-    /** @var array */
-    protected $fillable = ['movie_id', 'time', 'cinema_hall_reservations'];
+    public function __construct()
+    {
+        $this->table = 'film_shows';
+        $this->timestamps = true;
+        $this->incrementing = true;
+        $this->fillable = ['movie_id', 'time', 'cinema_hall_reservations'];
+        parent::__construct();
+    }
 
     public function movie(): BelongsTo
     {

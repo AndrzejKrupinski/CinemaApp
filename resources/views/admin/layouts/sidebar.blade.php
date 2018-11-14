@@ -3,6 +3,15 @@
         Cinemas
     </a><br>
     <a href="{{ route('movie.index') }}" class="btn btn-outline-light btn-lg btn-block">
+        Cinema halls
+    </a><br>
+    <a href="{{ route('movie.index') }}" class="btn btn-outline-light btn-lg btn-block">
+        Filmshows
+    </a><br>
+    <a href="{{ route('movie.index') }}" class="btn btn-outline-light btn-lg btn-block">
         Movies
+    </a><br>
+    <a href="{{ route('movie.index') }}" class="btn btn-outline-light btn-lg btn-block">
+        Reservations
     </a>
 </div>

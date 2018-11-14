@@ -8,20 +8,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Cinema extends Model
 {
-    /** @var string */
-    protected $table = 'cinemas';
-
-    /** @var array */
-    protected $fillable = [
-        'name',
-        'website',
-        'email',
-        'street',
-        'street_no',
-        'zipcode',
-        'city',
-        'country',
-    ];
+    public function __construct()
+    {
+        $this->table = 'cinemas';
+        $this->timestamps = true;
+        $this->incrementing = true;
+        $this->fillable = [
+            'name',
+            'website',
+            'email',
+            'street',
+            'street_no',
+            'zipcode',
+            'city',
+            'country',
+        ];
+        parent::__construct();
+    }
 
     public function cinemaHalls(): HasMany
     {

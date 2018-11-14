@@ -58216,7 +58216,6 @@ module.exports = __webpack_require__(48);
  */
 
 __webpack_require__(9);
-__webpack_require__(49);
 
 window.Vue = __webpack_require__(36);
 
@@ -58230,19 +58229,6 @@ Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
   el: '#app'
-});
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-        $('#sidebar').toggleClass('col-md-3');
-        $('#main-space').toggleClass('col-md-9');
-        $('#main-space').toggleClass('col-md-11');
-    });
 });
 
 /***/ })

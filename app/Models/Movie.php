@@ -8,21 +8,24 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Movie extends Model
 {
-    /** @var string */
-    protected $table = 'movies';
-
-    /** @var array */
-    protected $fillable = [
-        'title',
-        'description',
-        'year',
-        'country',
-        'genre',
-        'director',
-        'rating',
-        'duration',
-        'photo',
-    ];
+    public function __construct()
+    {
+        $this->table = 'movies';
+        $this->timestamps = true;
+        $this->incrementing = true;
+        $this->fillable = [
+            'title',
+            'description',
+            'year',
+            'country',
+            'genre',
+            'director',
+            'rating',
+            'duration',
+            'photo',
+        ];
+        parent::__construct();
+    }
 
     public function filmShows(): HasMany
     {
