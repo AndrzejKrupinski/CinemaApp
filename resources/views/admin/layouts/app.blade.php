@@ -77,11 +77,13 @@
                 </ul>
             </div>
         @endif
-        @if (isset($errors))
-        {{-- @if (isset($errors) || $errors->any()) --}}
+        @if (isset($errors) && $errors->any())
             <div class="alert alert-success">
                 <ul>
-                    @foreach ($errors->all() as $error)
+                    <!-- @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach -->
+                    @foreach ($errors->getBags() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>

@@ -4,7 +4,9 @@
     <div class="container py-5">
         <form action="{{ $cinema->id ? route('cinema.update') : route('cinema.store') }}" method='POST'>
             @csrf
-            @method('PUT')
+            @if ($cinema->id)
+                @method('PUT')
+            @endif
             <input type='text' name='id' value="{{ $cinema->id ?: null }}" hidden/>
             <div class="container-title text-center">
                 <h2>{{ $cinema->id ? "$cinema->name - Edit" : 'New cinema - Create' }}</h2>

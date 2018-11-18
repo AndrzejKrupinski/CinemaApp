@@ -29,7 +29,6 @@ class CinemaController extends Controller
 
     public function index(array $messages = null, array $errors = null): View
     {
-        dd($messages, $errors);
         return view('admin.cinema.index', [
             'cinemas' => $this->service->getAll(),
             'messages' => $messages ?? null,
