@@ -28,7 +28,7 @@
                             Year opened: {{ $cinema->created_at->year }}
                         </p>
                         <p id="{{ $cinema->id }}-website">
-                            <a href={{ $cinema->website }}>Website</a>
+                            <a href="//{{ ($cinema->website) }}">Website</a>
                         </p>
                         <p id="{{ $cinema->id }}-email">
                             <a href="mailto:{{ $cinema->email }}">Email</a>
