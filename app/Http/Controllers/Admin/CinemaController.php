@@ -54,33 +54,51 @@ class CinemaController extends Controller
             ]);
         }
 
-        return redirect()->route('cinema.index', ['errors' => ["Wront cinema id given!"]]);
+        return redirect()
+            ->route('cinema.index', ['errors' => ["Wrong cinema id given!"]]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         if ($this->adminService->store($request)) {
-            return redirect()->route('cinema.index', ['messages' => ["Cinema saved successfully!"]]);
+            return redirect()
+                ->route('cinema.index', [
+                    'messages' => ["Cinema saved successfully!"]
+                ]);
         }
 
-        return redirect()->route('cinema.index', ['errors' => ["Couldn't save cinema!"]]);
+        return redirect()->route('cinema.index', [
+            'errors' => ["Couldn't save the cinema!"]
+        ]);
     }
 
     public function update(Request $request): RedirectResponse
     {
         if ($this->adminService->update($request)) {
-            return redirect()->route('cinema.index', ['messages' => ["Cinema updated successfully!"]]);
+            return redirect()
+                ->route('cinema.index', [
+                    'messages' => ["Cinema updated successfully!"]
+                ]);
         }
 
-        return redirect()->route('cinema.index', ['errors' => ["Couldn't update cinema!"]]);
+        return redirect()
+            ->route('cinema.index', [
+                'errors' => ["Couldn't update the cinema!"]
+            ]);
     }
 
     public function destroy(int $siteId): RedirectResponse
     {
         if ($this->adminService->destroy($siteId)) {
-            return redirect()->route('cinema.index', ['messages' => ["Cinema deleted successfully!"]]);
+            return redirect()
+                ->route('cinema.index', [
+                    'messages' => ["Cinema deleted successfully!"]
+                ]);
         }
 
-        return redirect()->route('cinema.index', ['errors' => ["Couldn't delete cinema!"]]);
+        return redirect()
+            ->route('cinema.index', [
+                'errors' => ["Couldn't delete the cinema!"]
+            ]);
     }
 }
