@@ -2,6 +2,8 @@
 
 Route::get('/', 'HomeController@index')->name('admin.app');
 
+//RESOURCES?
+
 Route::prefix('cinema')->group(function () {
     Route::get('/', 'CinemaController@index')->name('cinema.index');
     Route::get('create', 'CinemaController@create')->name('cinema.create');
