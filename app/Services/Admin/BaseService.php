@@ -2,15 +2,18 @@
 
 namespace App\Services\Admin;
 
-use App\Models\Cinema;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
-class CinemaService extends BaseService
+class BaseService
 {
-    public function __construct(Cinema $cinema)
+    /** @var Model */
+    private $model;
+
+    public function __construct(Model $model)
     {
-        $this->model = $cinema;
+        $this->model = $model;
     }
 
     public function store(Request $request)

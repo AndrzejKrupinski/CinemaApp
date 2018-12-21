@@ -2,12 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\Cinema;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
-class CinemaService extends BaseService
+class BaseService
 {
-    public function __construct(Cinema $cinema)
+    /** @var Model */
+    private $model;
+
+    public function __construct(Model $cinema)
     {
         $this->model = $cinema;
     }
