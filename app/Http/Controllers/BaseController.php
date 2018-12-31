@@ -8,15 +8,14 @@ use Illuminate\View\View;
 
 class BaseController extends Controller
 {
-    /** string */
+    /** @var string */
     private $model;
 
     /** @var BaseService */
     private $service;
 
-    public function __construct(string $model, BaseService $service)
+    public function __construct(BaseService $service)
     {
-        $this->model = $model;
         $this->service = $service;
     }
 

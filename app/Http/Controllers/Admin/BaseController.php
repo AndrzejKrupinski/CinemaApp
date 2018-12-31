@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 
 class BaseController extends Controller
 {
-    /** string */
+    /** @var string */
     private $model;
 
     /** @var BaseService */
@@ -23,11 +23,9 @@ class BaseController extends Controller
     private $adminService;
 
     public function __construct(
-        string $model,
         BaseService $service,
         AdminBaseService $adminService
     ) {
-        $this->model = $model;
         $this->service = $service;
         $this->adminService = $adminService;
     }

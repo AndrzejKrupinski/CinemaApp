@@ -12,8 +12,8 @@ class CinemaService extends BaseService
         $this->model = $cinema;
     }
 
-    public function getAll(): Collection
-    {
-        return $this->model::all();
-    }
+    // public function getAll(): Collection
+    // {
+    //     return $this->model::all();
+    // }
 }
