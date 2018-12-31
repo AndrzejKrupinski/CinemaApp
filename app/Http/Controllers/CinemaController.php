@@ -6,8 +6,11 @@ use App\Services\CinemaService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
-class CinemaController extends Controller
+class CinemaController extends BaseController
 {
+    /** @var string */
+    private $model = 'cinema';
+
     /** @var CinemaService */
     private $service;
 
@@ -15,11 +18,11 @@ class CinemaController extends Controller
     {
         $this->service = $service;
     }
-
-    public function index(): View
-    {
-        return view('cinema.index', [
-            'cinemas' => $this->service->getAll(),
-        ]);
-    }
+    //
+    // public function index(): View
+    // {
+    //     return view('cinema.index', [
+    //         'cinemas' => $this->service->getAll(),
+    //     ]);
+    // }
 }
