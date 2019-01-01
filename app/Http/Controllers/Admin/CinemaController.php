@@ -75,9 +75,9 @@ class CinemaController extends Controller
         return redirect()->route('cinema.index', ['errors' => ["Couldn't update cinema!"]]);
     }
 
-    public function destroy(int $siteId): RedirectResponse
+    public function destroy(int $cinemaId): RedirectResponse
     {
-        if ($this->adminService->destroy($siteId)) {
+        if ($this->adminService->destroy($cinemaId)) {
             return redirect()->route('cinema.index', ['messages' => ["Cinema deleted successfully!"]]);
         }
 

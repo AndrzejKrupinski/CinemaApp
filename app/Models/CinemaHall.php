@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class CinemaHalls extends Model
+class CinemaHall extends Model
 {
     public function __construct()
     {
@@ -23,7 +23,7 @@ class CinemaHalls extends Model
         parent::__construct();
     }
 
-    public function cinemaHalls(): BelongsTo
+    public function cinema(): BelongsTo
     {
         return $this->BelongsTo(Cinema::class, 'cinema_id');
     }
