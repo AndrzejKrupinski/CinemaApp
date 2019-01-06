@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\CinemaHall;
 use App\Services\CinemaHallService;
+use App\Services\CinemaService;
 use App\Services\Admin\CinemaHallService as AdminCinemaHallService;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,21 +17,27 @@ class CinemaHallController extends Controller
     /** @var CinemaHallService */
     private $service;
 
+    /** @var CinemaService */
+    private $cinemaService;
+
     /** @var AdminCinemaHallService */
     private $adminService;
 
     public function __construct(
         CinemaHallService $service,
-        AdminCinemaHallService $adminService
-    ) {
+        AdminCinemaHallService $adminService,
+        CinemaService $cinemaService
+) {
         $this->service = $service;
         $this->adminService = $adminService;
+        $this->cinemaService = $cinemaService;
     }
 
     public function index(array $messages = null, array $errors = null): View
     {
         return view('admin.cinema-hall.index', [
-            'cinema-halls' => $this->service->getAll(),
+            'cinemaHalls' => $this->service->getAll(),
+            'cinemas' => $this->cinemaService->getAll(),
             'messages' => $messages ?? null,
             'errors' => $errors ?? null,
         ]);
@@ -40,6 +47,7 @@ class CinemaHallController extends Controller
     {
         return view('admin.cinema-hall.create', [
             'cinemaHall' => CinemaHall::make(),
+            'cinemas' => $this->cinemaService->getAll(),
         ]);
     }
 
@@ -50,7 +58,8 @@ class CinemaHallController extends Controller
     {
         if ($cinemaHall = CinemaHall::find($cinemaHallId)) {
             return view('admin.cinema-hall.create', [
-                'cinema-hall' => $cinemaHall,
+                'cinemaHall' => $cinemaHall,
+                'cinemas' => $this->cinemaService->getAll(),
             ]);
         }
 
